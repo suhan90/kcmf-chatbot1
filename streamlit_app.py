@@ -2,11 +2,10 @@ import streamlit as st
 import requests
 import os
 
-# API 엔드포인트 (Cloud Functions 또는 Cloud Run에 배포된 주소)
+# API 엔드포인트 : 스트림릿 환경설정 값으로 지정
 API_ENDPOINT = os.environ.get("API_ENDPOINT", "https://kcmf-chatbot-api.....run.app/un.app/query")
 
 st.title("문서 질의응답 시스템")
-st.write(API_ENDPOINT)
 st.write("문서 관련 질문을 입력하면 관련 문서에서 답변을 찾아드립니다.")
 
 # 사용자 입력
