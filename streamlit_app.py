@@ -3,7 +3,7 @@ import requests
 import os
 
 # API 엔드포인트 (Cloud Functions 또는 Cloud Run에 배포된 주소)
-API_ENDPOINT = os.environ.get("API_ENDPOINT", "https://kcmf-chatbot1.cloudfunctions.net/query")
+API_ENDPOINT = os.environ.get("API_ENDPOINT", "https://kcmf-chatbot-api-480722384917.us-central1.run.app/query")
 
 st.title("문서 질의응답 시스템")
 st.write("문서 관련 질문을 입력하면 관련 문서에서 답변을 찾아드립니다.")
