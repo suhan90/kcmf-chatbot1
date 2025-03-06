@@ -18,6 +18,10 @@ if question:
                 API_ENDPOINT,
                 json={"question": question}
             )
+
+            st.write("상태 코드:", response.status_code)
+            st.write("응답 헤더:", response.headers)
+            st.write("응답 내용:", response.text)
             
             if response.status_code == 200:
                 answer = response.json().get("answer")
