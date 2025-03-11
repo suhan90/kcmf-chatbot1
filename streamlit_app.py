@@ -6,7 +6,7 @@ import os
 API_ENDPOINT = os.environ.get("API_ENDPOINT")
 
 st.title("KCMF 문서 질의응답 시스템")
-st.write("질문을 입력하면 저장된 문서에서 답변을 찾아드립니다. 문서 저장 문의: kjh [at] kcmf_or_kr")
+st.write("저장된 문서에서 답변을 찾습니다. 문서 저장 문의: kjh [at] kcmf_or_kr")
 
 # 사용자 입력
 question = st.text_input("질문:")
@@ -21,7 +21,7 @@ if question:
 
             if response.status_code == 200:
                 answer = response.json().get("answer")
-                st.write("### 답변")
+                st.write("#### 답변")
                 st.write(answer)
             else:
                 error_message = f"상태 코드: {response.status_code}\n"
