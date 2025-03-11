@@ -3,7 +3,7 @@ import requests
 import os
 
 # API 엔드포인트 : 스트림릿 환경설정 값으로 지정
-API_ENDPOINT = os.environ.get("API_ENDPOINT", "https://kcmf-chatbot-api.....run.app/un.app/query")
+API_ENDPOINT = os.environ.get("API_ENDPOINT")
 
 st.title("KCMF 문서 질의응답 시스템")
 st.write("질문을 입력하면 저장된 문서에서 답변을 찾아드립니다. 문서 저장 문의: kjh [at] kcmf_or_kr")
