@@ -25,7 +25,7 @@ with st.sidebar:
     """)
     if st.button("대화 초기화"):
         st.session_state.messages = []
-        st.experimental_rerun()
+        st.rerun()
 
 # 기존 대화 메시지 표시
 for message in st.session_state.messages:
