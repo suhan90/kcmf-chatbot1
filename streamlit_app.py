@@ -21,9 +21,10 @@ if "messages" not in st.session_state:
 with st.sidebar:
     st.header("사용 안내")
     st.write("""
-    문서 관련 질문을 입력하면 관련 문서에서 답변을 찾습니다.
     검색이 정확하지 않고, AI가 법률을 해석하지도 못합니다. ㅠㅠ\n
-    AI에게 필요한건 문서 몇개가 아니라 빅데이터입니다.
+    AI에게 필요한건 문서 몇개가 아니라 빅데이터입니다.\n
+    빅데이터가 아닌 경우 벡터DB나 RAG로 구축하는 것이 아니라\n
+    일반DB로 구축하고 검색하여 결과를 가공하도록 재구성해야겠습니다.
     """)
     if st.button("대화 초기화"):
         st.session_state.messages = []
