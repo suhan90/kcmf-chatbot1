@@ -11,7 +11,7 @@ st.set_page_config(
     layout="wide"
 )
 
-st.title("KCMF 문서 질의응답 시스템(alpha)")
+st.title("KCMF 문서 질의응답 시스템(v0.2)")
 
 # 세션 상태 초기화
 if "messages" not in st.session_state:
@@ -22,7 +22,8 @@ with st.sidebar:
     st.header("사용 안내")
     st.write("""
     문서 관련 질문을 입력하면 관련 문서에서 답변을 찾습니다.
-    하지만 현재 입력된 문서의 양이 적고, AI가 법률을 스스로 해석하지 못합니다.
+    아직 검색이 정확하지 않고, AI가 법률을 해석하지도 못합니다. ㅠㅠ
+    단순히 문서를 때려넣는다고 해서 데이터가 되는 것은 아니군요.
     """)
     if st.button("대화 초기화"):
         st.session_state.messages = []
