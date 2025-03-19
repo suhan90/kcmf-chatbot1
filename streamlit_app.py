@@ -21,9 +21,13 @@ if "messages" not in st.session_state:
 with st.sidebar:
     st.header("사용 안내")
     st.write("""
-    한국어 검색이 되는 임베딩 모델로 교체했습니다.\n
-    데이터 훈련은 이뤄지지 않았습니다.\n
-    grounding 으로 assistant를 만드는 작업은 다음 기회에...
+    학습한 문서:\n
+    - 재단 규정, 규칙, 지침\n
+    - \n
+    \n
+    주의사항:\n
+    - 문서 검색 결과를 가공한 답변으로, 논리적인 오류가 있을 가능성이 큽니다. 중요한 경우, 원문을 확인하세요.\n
+    - 사용량이 많으면 요금이 부과됩니다.\n
     """)
     if st.button("대화 초기화"):
         st.session_state.messages = []
