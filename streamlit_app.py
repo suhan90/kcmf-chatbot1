@@ -11,7 +11,7 @@ st.set_page_config(
     layout="wide"
 )
 
-st.title("KCMF 문서 질의응답 시스템(v0.2)")
+st.title("KCMF 문서 질의응답 시스템(v0.3)")
 
 # 세션 상태 초기화
 if "messages" not in st.session_state:
@@ -21,10 +21,9 @@ if "messages" not in st.session_state:
 with st.sidebar:
     st.header("사용 안내")
     st.write("""
-    검색이 정확하지 않고, AI가 법률을 해석하지도 못합니다. ㅠㅠ\n
-    AI에게 필요한건 문서 몇개가 아니라 빅데이터입니다.\n
-    빅데이터가 아닌 경우 벡터DB나 RAG로 구축하는 것이 아니라\n
-    일반DB로 구축하고 검색하여 결과를 가공하도록 재구성해야겠습니다.
+    한국어 검색이 되는 임베딩 모델로 교체했습니다.\n
+    데이터 훈련은 이뤄지지 않았습니다.\n
+    grounding 으로 assistant를 만드는 작업은 다음 기회에...
     """)
     if st.button("대화 초기화"):
         st.session_state.messages = []
