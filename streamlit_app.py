@@ -16,34 +16,20 @@ st.set_page_config(
 st.title("KCMF 문서 Q&A 챗봇(v0.3)")
 
 # 로그인 여부 확인
-if "authenticated" not in st.session_state:
-    st.session_state.authenticated = False
 if not st.session_state.authenticated:
-    # 입력 필드
-    password = st.text_input(
-        "암호를 입력하세요:",
-        type="password",
-        value=st.session_state.password_input,  # 세션 상태에서 값 불러오기
-        key="password_input",  # 자동 선택 & 삭제를 위한 키 지정
-        on_change=lambda: handle_password(),  # 입력 변경 시 즉시 실행
-    )
-    if st.session_state.error_message:
-        st.warning(st.session_state.error_message)
+    password = st.text_input("암호를 입력하세요:", type="password")
+    if st.button("확인"):
+        if password == ACCESS_PASSWORD:
+            st.session_state.authenticated = True
+            st.success("인증 성공!")
+            st.session_state.error_message = ""  # 에러 메시지 삭제
+            st.rerun() # 화면을 다시 렌더링하여 암호 입력창을 제거
+        else:
+            st.warning("잘못된 암호입니다.")
+            # st.error("잘못된 암호입니다.")
+# if not st.session_state.authenticated:
+#     st.stop()
 
-def handle_password():
-    """ 암호 확인 및 자동 삭제 기능 """
-    if st.session_state.password_input == ACCESS_PASSWORD:
-        st.session_state.authenticated = True
-        st.session_state.error_message = ""
-        st.session_state.password_input = ""  # 입력 필드 초기화
-        st.rerun()  # 인증 성공 후 UI 리로드
-    else:
-        st.session_state.error_message = "잘못된 암호입니다."
-        st.session_state.password_input = ""  # 기존 입력값 삭제
-
-if not st.session_state.authenticated:
-    st.stop()
-    
 
 # 세션 상태 초기화
 if "messages" not in st.session_state:
