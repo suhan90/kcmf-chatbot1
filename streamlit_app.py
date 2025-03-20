@@ -29,8 +29,8 @@ if not st.session_state.authenticated:
         else:
             st.warning("잘못된 암호입니다.")
             # st.error("잘못된 암호입니다.")
-# if not st.session_state.authenticated:
-#     st.stop()
+if not st.session_state.authenticated:
+    st.stop()
 
 
 # 세션 상태 초기화
