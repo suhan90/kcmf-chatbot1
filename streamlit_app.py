@@ -4,8 +4,7 @@ import os
 
 # API 엔드포인트 (App Engine 또는 Cloud Run에 배포된 주소)
 API_URL = os.environ.get("API_URL")
-# 허용된 IP 목록, 암호
-ALLOWED_IPS = os.environ.get("API_URL")
+# 암호
 ACCESS_PASSWORD = os.environ.get("ACCESS_PASSWORD")
 
 st.set_page_config(
@@ -16,43 +15,19 @@ st.set_page_config(
 
 st.title("KCMF 문서 Q&A 챗봇(v0.3)")
 
-# 사용자 IP 확인 함수
-# JavaScript를 사용하여 클라이언트 IP 가져오기
-st.markdown(
-    """
-    <script>
-        async function getIP() {
-            let response = await fetch('https://api64.ipify.org?format=json');
-            let data = await response.json();
-            let queryParams = new URLSearchParams(window.location.search);
-            queryParams.set("client_ip", data.ip);
-            window.location.search = queryParams.toString();
-        }
-        if (!new URLSearchParams(window.location.search).has("client_ip")) {
-            getIP();
-        }
-    </script>
-    """,
-    unsafe_allow_html=True,
-)
-# Streamlit에서 URL 파라미터로 받은 IP 확인
-query_params = st.query_params
-client_ip = query_params.get("client_ip", "알 수 없음")
-st.write(f"당신의 IP: {client_ip}")
-
-# IP 검사 및 암호 인증 확인
+# 암호 인증 확인
 if "authenticated" not in st.session_state:
     st.session_state.authenticated = False
-if client_ip not in ALLOWED_IPS:
-    st.warning(f"현재 IP: {client_ip} (허용되지 않은 IP입니다.)")
+if not st.session_state.authenticated:
     password = st.text_input("암호를 입력하세요:", type="password")
     if st.button("확인"):
         if password == ACCESS_PASSWORD:
             st.session_state.authenticated = True
             st.success("인증 성공!")
         else:
-            st.error("잘못된 암호입니다.")
-if client_ip not in ALLOWED_IPS and not st.session_state.authenticated:
+            st.warning("잘못된 암호입니다.")
+            # st.error("잘못된 암호입니다.")
+if not st.session_state.authenticated:
     st.stop()
     
 
