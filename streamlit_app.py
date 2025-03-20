@@ -21,9 +21,9 @@ if "messages" not in st.session_state:
 with st.sidebar:
     st.header("사용 안내")
     st.write("""
-    학습한 문서:\n
+    조사할 문서:\n
     - 재단 규정, 규칙, 지침\n
-    - \n
+    - 미디어교육 연구자료 약간\n
     \n
     주의사항:\n
     - 답변에는 논리적 오류와 허점이 있을 가능성이 큽니다. 참고용으로만 사용하고, 근거를 확인하세요.\n
