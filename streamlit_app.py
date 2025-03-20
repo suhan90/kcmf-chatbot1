@@ -19,7 +19,7 @@ st.title("KCMF 문서 Q&A 챗봇(v0.3)")
 if "authenticated" not in st.session_state:
     st.session_state.authenticated = False
 if not st.session_state.authenticated:
-    password = st.text_input("암호를 입력하세요:", type="password")
+    password = st.text_input("암호(9500)를 입력하세요:", type="password")
     if st.button("확인"):
         if password == ACCESS_PASSWORD:
             st.session_state.authenticated = True
