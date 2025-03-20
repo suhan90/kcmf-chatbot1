@@ -24,6 +24,8 @@ if not st.session_state.authenticated:
         if password == ACCESS_PASSWORD:
             st.session_state.authenticated = True
             st.success("인증 성공!")
+            st.session_state.error_message = ""  # 에러 메시지 삭제
+            st.rerun() # 화면을 다시 렌더링하여 암호 입력창을 제거
         else:
             st.warning("잘못된 암호입니다.")
             # st.error("잘못된 암호입니다.")
