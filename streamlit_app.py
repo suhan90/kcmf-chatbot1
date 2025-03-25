@@ -19,8 +19,22 @@ st.title("KCMF 문서 Q&A 챗봇(v0.3)")
 if "authenticated" not in st.session_state:
     st.session_state.authenticated = False
 if not st.session_state.authenticated:
-    password = st.text_input("암호를 입력하세요:", type="password")
-    if st.button("확인"):
+    password = st.text_input("암호를 입력하세요:", type="password", key="password_input")
+    # 엔터키 처리를 위한 JavaScript
+    st.markdown("""
+    <script>
+    const passwordInput = window.parent.document.querySelector('input[type="password"]');
+    passwordInput.addEventListener('keypress', function(e) {
+        if (e.key === 'Enter') {
+            const loginButton = window.parent.document.querySelector('button[kind="secondary"]');
+            if (loginButton) {
+                loginButton.click();
+            }
+        }
+    });
+    </script>
+    """, unsafe_allow_html=True)
+    if st.button("확인") or st.session_state.submitted:
         if password == ACCESS_PASSWORD:
             st.session_state.authenticated = True
             st.success("인증 성공!")
