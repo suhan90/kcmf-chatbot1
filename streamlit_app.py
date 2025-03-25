@@ -22,7 +22,8 @@ if not st.session_state.authenticated:
     # 엔터키 처리를 위해 form 사용
     with st.form(key='password_form'):
         password = st.text_input("암호를 입력하세요:", type="password", key="password_input")
-        if st.button("확인"):
+        submit_button = st.form_submit_button("확인")
+        if submit_button:
             if password == ACCESS_PASSWORD:
                 st.session_state.authenticated = True
                 st.success("인증 성공!")
