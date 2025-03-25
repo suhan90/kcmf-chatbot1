@@ -18,6 +18,8 @@ st.title("KCMF 문서 Q&A 챗봇(v0.3)")
 # 로그인 여부 확인
 if "authenticated" not in st.session_state:
     st.session_state.authenticated = False
+if 'submitted' not in st.session_state:
+    st.session_state.submitted = False
 if not st.session_state.authenticated:
     password = st.text_input("암호를 입력하세요:", type="password", key="password_input")
     # 엔터키 처리를 위한 JavaScript
