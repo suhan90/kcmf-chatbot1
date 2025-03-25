@@ -18,36 +18,21 @@ st.title("KCMF 문서 Q&A 챗봇(v0.3)")
 # 로그인 여부 확인
 if "authenticated" not in st.session_state:
     st.session_state.authenticated = False
-if 'submitted' not in st.session_state:
-    st.session_state.submitted = False
 if not st.session_state.authenticated:
-    password = st.text_input("암호를 입력하세요:", type="password", key="password_input")
-    # 엔터키 처리를 위한 JavaScript
-    st.markdown("""
-    <script>
-    const passwordInput = window.parent.document.querySelector('input[type="password"]');
-    passwordInput.addEventListener('keypress', function(e) {
-        if (e.key === 'Enter') {
-            const loginButton = window.parent.document.querySelector('button[kind="secondary"]');
-            if (loginButton) {
-                loginButton.click();
-            }
-        }
-    });
-    </script>
-    """, unsafe_allow_html=True)
-    if st.button("확인") or st.session_state.submitted:
-        if password == ACCESS_PASSWORD:
-            st.session_state.authenticated = True
-            st.success("인증 성공!")
-            st.session_state.error_message = ""  # 에러 메시지 삭제
-            st.rerun() # 화면을 다시 렌더링하여 암호 입력창을 제거
-        else:
-            st.warning("잘못된 암호입니다.")
-            # st.error("잘못된 암호입니다.")
+    # 엔터키 처리를 위해 form 사용
+    with st.form(key='password_form'):
+        password = st.text_input("암호를 입력하세요:", type="password", key="password_input")
+        if st.button("확인"):
+            if password == ACCESS_PASSWORD:
+                st.session_state.authenticated = True
+                st.success("인증 성공!")
+                st.rerun() # 화면을 다시 렌더링하여 암호 입력창을 제거
+            else:
+                st.warning("잘못된 암호입니다.")
+                # st.error("잘못된 암호입니다.")
+    
 if not st.session_state.authenticated:
     st.stop()
-
 
 # 세션 상태 초기화
 if "messages" not in st.session_state:
