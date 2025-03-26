@@ -8,12 +8,12 @@ API_URL = os.environ.get("API_URL")
 ACCESS_PASSWORD = os.environ.get("ACCESS_PASSWORD")
 
 st.set_page_config(
-    page_title="KCMF 문서 Q&A 챗봇",
+    page_title="KCMF문서 Q&A 챗봇",
     page_icon="📚",
     layout="wide"
 )
 
-st.title("KCMF 문서 Q&A 챗봇(v0.3)")
+st.title("KCMF문서 Q&A 챗봇")
 
 # 로그인 여부 확인
 if "authenticated" not in st.session_state:
