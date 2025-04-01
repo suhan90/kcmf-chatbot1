@@ -76,7 +76,7 @@ with st.sidebar:
     if st.button("대화 초기화"):
         st.session_state.messages = []
         st.rerun()
-    st.write("## 주의: \n-질문이 조금만 달라도 결과가 달라집니다.\n- 검색 결과에 따른 임의 답변입니다. 100% 신뢰하지 마세요.")
+    st.write("## 주의: \n- 질문이 조금만 바뀌어도 검색 결과가 달라집니다. 100% 신뢰하지 마세요.")
     
 # 기존 대화 메시지 표시
 for message in st.session_state.messages:
