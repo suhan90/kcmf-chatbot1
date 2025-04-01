@@ -76,7 +76,8 @@ with st.sidebar:
     if st.button("대화 초기화"):
         st.session_state.messages = []
         st.rerun()
-
+    st.write("## 주의: \n검색 결과에 따른 임의 답변입니다. 100% 신뢰하지 마세요.")
+    
 # 기존 대화 메시지 표시
 for message in st.session_state.messages:
     with st.chat_message(message["role"]):
