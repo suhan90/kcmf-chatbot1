@@ -66,7 +66,7 @@ example_questions = [
     "공문서 작성 시 1,2,3 앞에 띄어쓰기는 몇 칸?",
     "기록물 보존 기간별 대상 기록물은?",
 ]
-selected_questions = random.sample(example_questions, 10)
+selected_questions = random.sample(example_questions, 8)
 
 # 사이드바
 with st.sidebar:
