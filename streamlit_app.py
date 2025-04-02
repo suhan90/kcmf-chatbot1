@@ -74,12 +74,12 @@ selected_questions = random.sample(example_questions, 6)
 
 # 사이드바
 with st.sidebar:
-    st.header("질문 예시")
-    for question in selected_questions:
-        st.write(f"- {question}")
     if st.button("대화 초기화"):
         st.session_state.messages = []
         st.rerun()
+    st.header("질문 예시")
+    for question in selected_questions:
+        st.write(f"- {question}")
     st.write("## 주의: \n- 질문이 조금만 바뀌어도 검색 결과가 달라지며, 검색결과 일부를 사용해 답변하므로 누락되는 정보가 있습니다. 100% 신뢰하지 마시고, 질문을 다양하게 해보세요.")
     
 # 기존 대화 메시지 표시
