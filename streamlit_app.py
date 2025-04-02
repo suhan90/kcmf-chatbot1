@@ -69,7 +69,7 @@ example_questions = [
     "기록물 보존 기간별 대상 기록물은?",
     "행사 의전시 차상위자 위치는 최상위자의 오른편인가 왼편인가?",
 ]
-selected_questions = random.sample(example_questions, 8)
+selected_questions = random.sample(example_questions, 6)
 
 # 사이드바
 with st.sidebar:
